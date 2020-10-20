@@ -325,8 +325,6 @@ func typeAdjustName(purlType, name string) string {
 	switch purlType {
 	case TypeBitbucket, TypeDebian, TypeGithub, TypeGolang, TypeNPM:
 		return strings.ToLower(name)
-	case TypePyPi:
-		return strings.ToLower(strings.ReplaceAll(name, "_", "-"))
 	}
 	return name
 }
