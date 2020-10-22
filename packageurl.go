@@ -160,6 +160,9 @@ func (p *PackageURL) ToString() string {
 		for _, item := range strings.Split(p.Namespace, "/") {
 			ns = append(ns, url.QueryEscape(item))
 		}
+		if p.Type == "npm" && strings.HasPrefix(ns[0], "%40") {
+			ns[0] = strings.Replace(ns[0], "%40", "@", 1)
+		}
 		purl = purl + strings.Join(ns, "/") + "/"
 	}
 	// The name is always required and must be a percent-encoded string
